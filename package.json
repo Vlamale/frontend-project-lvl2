@@ -3,8 +3,10 @@
   "version": "1.0.0",
   "description": "[![Actions Status](https://github.com/Vlamale/frontend-project-lvl2/workflows/hexlet-check/badge.svg)](https://github.com/Vlamale/frontend-project-lvl2/actions)",
   "main": "index.js",
+  "type": "module",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "npx jest --bail",
+    "testing": "npx jest --watch"
   },
   "bin": {
     "gendiff": "./bin/gendiff.js"
@@ -21,5 +23,17 @@
   "homepage": "https://github.com/Vlamale/frontend-project-lvl2#readme",
   "dependencies": {
     "commander": "^9.0.0"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.17.0",
+    "@babel/core": "^7.17.2",
+    "@babel/node": "^7.16.8",
+    "@babel/preset-env": "^7.16.11",
+    "babel-eslint": "^10.1.0",
+    "babel-jest": "^27.5.1",
+    "eslint": "^8.9.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-plugin-import": "^2.25.4",
+    "jest": "^27.5.1"
   }
 }
