@@ -2,10 +2,18 @@ import fs from 'fs';
 import path from 'path';
 import gendiff from '../index';
 
-const result = fs.readFileSync(path.resolve(__dirname, './__fixtures__/flatComparison/result.txt'), { encoding: 'utf8' });
-const path1 = path.resolve(__dirname, './__fixtures__/flatComparison/filepath1.json');
-const path2 = path.resolve(__dirname, './__fixtures__/flatComparison/filepath2.json');
+const jsonRresult = fs.readFileSync(path.resolve(__dirname, './__fixtures__/jsonComparison/flat/result.txt'), { encoding: 'utf8' });
+const jsonFileData1 = path.resolve(__dirname, './__fixtures__/jsonComparison/flat/test1.json');
+const jsonFileData2 = path.resolve(__dirname, './__fixtures__/jsonComparison/flat/test2.json');
+
+const yamlResult = fs.readFileSync(path.resolve(__dirname, './__fixtures__/yamlComparison/flat/result.txt'), { encoding: 'utf8' });
+const yamlFileData1 = path.resolve(__dirname, './__fixtures__/yamlComparison/flat/test1.yaml');
+const yamlFileData2 = path.resolve(__dirname, './__fixtures__/yamlComparison/flat/test2.yaml');
 
 test('flat json file comparison function', () => {
-  expect(gendiff(path1, path2)).toBe(result);
+  expect(gendiff(jsonFileData1, jsonFileData2)).toBe(jsonRresult);
+});
+
+test('flat yaml file comparison function', () => {
+  expect(gendiff(yamlFileData1, yamlFileData2)).toBe(yamlResult);
 });

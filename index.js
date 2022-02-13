@@ -1,8 +1,8 @@
-import { readFile } from './src/utils';
+import { parseFile } from './src/parsers.js';
 
 export default function (filePath1, filePath2) {
-  const firstFileData = readFile(filePath1);
-  const secondFileData = readFile(filePath2);
+  const firstFileData = parseFile(filePath1);
+  const secondFileData = parseFile(filePath2);
   const result = Object.keys({ ...firstFileData, ...secondFileData })
     .sort()
     .reduce((acc, node) => {
