@@ -13,5 +13,8 @@
 ### Comparison of yaml and json files with nested structure:
 [![asciicast](https://asciinema.org/a/bMTXPDGgPUZcZ0oQUcjETlrkn.svg)](https://asciinema.org/a/bMTXPDGgPUZcZ0oQUcjETlrkn)
 
-### Plain comparison output
+### Plain output
 [![asciicast](https://asciinema.org/a/cZQSS91cAfTAXFGfYeOVyBfug.svg)](https://asciinema.org/a/cZQSS91cAfTAXFGfYeOVyBfug)
+
+### JSON output
+[![asciicast](https://asciinema.org/a/DxpocTnDVolBlw9yymtgDLnEC.svg)](https://asciinema.org/a/DxpocTnDVolBlw9yymtgDLnEC)

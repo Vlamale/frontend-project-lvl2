@@ -7,7 +7,7 @@ const formatValue = (value) => (_.isObject(value) ? '[complex value]' : `${addQu
 const getLine = {
   deleted: (path) => `Property '${path}' was removed`,
   added: (path, value) => `Property '${path}' was added with value: ${formatValue(value)}`,
-  updated: (path, value) => `Property '${path}' was updated. From ${formatValue(value[0])} to ${formatValue(value[1])}`,
+  updated: (path, value) => `Property '${path}' was updated. From ${formatValue(value.before)} to ${formatValue(value.after)}`,
   unchanged: () => [],
 };
 

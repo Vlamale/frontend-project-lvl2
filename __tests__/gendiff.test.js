@@ -12,6 +12,8 @@ const yamlFileData2 = path.resolve(__dirname, './__fixtures__/yamlComparison/fil
 
 const plainResult = fs.readFileSync(path.resolve(__dirname, './__fixtures__/plainResult.txt'), { encoding: 'utf8' });
 
+const jsonOutputResult = fs.readFileSync(path.resolve(__dirname, './__fixtures__/jsonResult.txt'), { encoding: 'utf8' });
+
 test('flat json file comparison function', () => {
   expect(gendiff(jsonFileData1, jsonFileData2)).toBe(jsonResult);
 });
@@ -23,4 +25,9 @@ test('flat yaml file comparison function', () => {
 test('plain output', () => {
   expect(gendiff(jsonFileData1, jsonFileData2, 'plain')).toBe(plainResult);
   expect(gendiff(yamlFileData1, yamlFileData2, 'plain')).toBe(plainResult);
+});
+
+test('json output', () => {
+  expect(gendiff(jsonFileData1, jsonFileData2, 'json')).toBe(jsonOutputResult);
+  expect(gendiff(yamlFileData1, yamlFileData2, 'json')).toBe(jsonOutputResult);
 });

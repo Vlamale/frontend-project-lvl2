@@ -21,7 +21,7 @@ const calcDiff = (tree1, tree2) => {
     }
 
     if (value1 !== value2) {
-      return { node, value: [value1, value2], status: 'updated' };
+      return { node, value: { before: value1, after: value2 }, status: 'updated' };
     }
 
     return { node, value: value1, status: 'unchanged' };

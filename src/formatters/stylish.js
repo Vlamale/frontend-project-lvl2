@@ -18,8 +18,8 @@ const getLine = {
   added: (node, value, depth, indent) => `${indent}+ ${node}: ${formatValue(value, depth)}`,
   unchanged: (node, value, depth, indent) => `${indent}  ${node}: ${formatValue(value, depth)}`,
   updated: (node, value, depth, indent) => [
-    `${indent}- ${node}: ${formatValue(value[0], depth)}`,
-    `${indent}+ ${node}: ${formatValue(value[1], depth)}`,
+    `${indent}- ${node}: ${formatValue(value.before, depth)}`,
+    `${indent}+ ${node}: ${formatValue(value.after, depth)}`,
   ],
 };
 
