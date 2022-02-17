@@ -1,39 +1,37 @@
 import _ from 'lodash';
 import { getIndent, lineInBrackets } from '../utils.js';
 
-const getLine = {
-  deleted: (key, value) => `- ${key}: ${value}`,
-  added: (key, value) => `+ ${key}: ${value}`,
-  unchanged: (key, value) => `  ${key}: ${value}`,
-};
-
-const formatObject = (value, depth) => {
+const formatValue = (value, depth) => {
   if (!_.isObject(value)) {
     return value;
   }
   const { currentIndent, bracketIndent } = getIndent(depth);
   const lines = Object
     .entries(value)
-    .map(([node, children]) => `${currentIndent}${getLine.unchanged(node, formatObject(children, depth + 2))}`);
+    .map(([node, children]) => `${currentIndent}  ${node}: ${formatValue(children, depth + 2)}`);
 
   return lineInBrackets(lines, bracketIndent);
 };
 
-export default (diff) => {
-  const iter = (currentValue, depth) => {
-    const { currentIndent, bracketIndent } = getIndent(depth);
-
-    const lines = currentValue.map(({ node, value, children, status }) => {
-      if (children) {
-        return `${currentIndent}${getLine[status](node, iter(children, depth + 2))}`;
-      }
-      if (_.isObject(value)) {
-        return `${currentIndent}${getLine[status](node, formatObject(value, depth + 2))}`;
-      }
-      return `${currentIndent}${getLine[status](node, value)}`;
-    });
-
-    return lineInBrackets(lines, bracketIndent);
-  };
-  return iter(diff, 1);
+const getLine = {
+  deleted: (node, value, depth, indent) => `${indent}- ${node}: ${formatValue(value, depth)}`,
+  added: (node, value, depth, indent) => `${indent}+ ${node}: ${formatValue(value, depth)}`,
+  unchanged: (node, value, depth, indent) => `${indent}  ${node}: ${formatValue(value, depth)}`,
+  updated: (node, value, depth, indent) => [
+    `${indent}- ${node}: ${formatValue(value[0], depth)}`,
+    `${indent}+ ${node}: ${formatValue(value[1], depth)}`,
+  ],
 };
+
+const stylish = (diff, depth = 1) => {
+  const { currentIndent, bracketIndent } = getIndent(depth);
+  const lines = diff.flatMap(({ node, value, diffTree, status }) => {
+    if (diffTree) {
+      return getLine[status](node, stylish(diffTree, depth + 2), depth + 2, currentIndent);
+    }
+    return getLine[status](node, value, depth + 2, currentIndent);
+  });
+  return lineInBrackets(lines, bracketIndent);
+};
+
+export default stylish;
