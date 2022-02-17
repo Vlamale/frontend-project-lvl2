@@ -1,8 +1,7 @@
 import _ from 'lodash';
-import { getUniqueSortedKeysFrom } from './utils.js';
 
 const calcDiff = (tree1, tree2) => {
-  const uniqueNodes = getUniqueSortedKeysFrom(tree1, tree2);
+  const uniqueNodes = _.sortBy(Object.keys({ ...tree1, ...tree2 }));
 
   return uniqueNodes.flatMap((node) => {
     const value1 = tree1[node];

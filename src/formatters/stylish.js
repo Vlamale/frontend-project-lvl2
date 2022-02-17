@@ -25,7 +25,9 @@ const getLine = {
 
 const stylish = (diff, depth = 1) => {
   const { currentIndent, bracketIndent } = getIndent(depth);
-  const lines = diff.flatMap(({ node, value, diffTree, status }) => {
+  const lines = diff.flatMap(({
+    node, value, diffTree, status,
+  }) => {
     if (diffTree) {
       return getLine[status](node, stylish(diffTree, depth + 2), depth + 2, currentIndent);
     }

@@ -5,8 +5,6 @@ export const getExt = (filePath) => path.extname(path.resolve(filePath));
 
 export const readFile = (filePath) => fs.readFileSync(path.resolve(filePath));
 
-export const getUniqueSortedKeysFrom = (obj1, obj2) => Object.keys({ ...obj1, ...obj2 }).sort();
-
 export const lineInBrackets = (lines, bracketIndent) => ['{', ...lines, `${bracketIndent}}`].join('\n');
 
 export const getIndent = (depth) => {

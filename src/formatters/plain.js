@@ -12,7 +12,9 @@ const getLine = {
 };
 
 const plain = (diff, path = []) => {
-  const lines = diff.flatMap(({ node, value, diffTree, status }) => {
+  const lines = diff.flatMap(({
+    node, value, diffTree, status,
+  }) => {
     const currentPath = [...path, node].join('.');
     if (diffTree) {
       return plain(diffTree, [...path, node]);

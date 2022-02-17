@@ -13,6 +13,5 @@ rules:
   no-console: off
   func-names: off
   import/extensions: off
-  object-curly-newline: off
     
 
