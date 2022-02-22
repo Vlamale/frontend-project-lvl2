@@ -5,7 +5,7 @@ const formatValue = (value, depth) => {
   if (!_.isObject(value)) {
     return value;
   }
-  
+
   const { currentIndent, bracketIndent } = getIndent(depth);
   const lines = Object
     .entries(value)

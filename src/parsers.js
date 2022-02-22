@@ -10,6 +10,6 @@ export const parsers = {
 export const parseFile = (filePath) => {
   const ext = getExt(filePath);
   const file = readFile(filePath);
-  
+
   return parsers[ext](file);
 };

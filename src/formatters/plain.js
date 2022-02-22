@@ -23,7 +23,7 @@ const plain = (diff, path = []) => {
 
     return getLine[status](currentPath, value);
   }).join('\n');
-  
+
   return lines;
 };
 

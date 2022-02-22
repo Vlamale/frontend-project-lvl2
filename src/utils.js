@@ -12,6 +12,6 @@ export const getIndent = (depth) => {
   const indentSize = depth * spacesCount;
   const currentIndent = ' '.repeat(indentSize);
   const bracketIndent = ' '.repeat(indentSize - spacesCount);
-  
+
   return { currentIndent, bracketIndent };
 };
