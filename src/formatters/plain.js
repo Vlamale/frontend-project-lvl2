@@ -16,11 +16,14 @@ const plain = (diff, path = []) => {
     node, value, diffTree, status,
   }) => {
     const currentPath = [...path, node].join('.');
+
     if (diffTree) {
       return plain(diffTree, [...path, node]);
     }
+
     return getLine[status](currentPath, value);
   }).join('\n');
+  
   return lines;
 };
 

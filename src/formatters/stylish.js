@@ -5,6 +5,7 @@ const formatValue = (value, depth) => {
   if (!_.isObject(value)) {
     return value;
   }
+  
   const { currentIndent, bracketIndent } = getIndent(depth);
   const lines = Object
     .entries(value)
@@ -31,8 +32,10 @@ const stylish = (diff, depth = 1) => {
     if (diffTree) {
       return getLine[status](node, stylish(diffTree, depth + 2), depth + 2, currentIndent);
     }
+
     return getLine[status](node, value, depth + 2, currentIndent);
   });
+
   return lineInBrackets(lines, bracketIndent);
 };
 
